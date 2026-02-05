@@ -1,1 +1,860 @@
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Magnifique Toucan - Affiche Éducative</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&family=Montserrat:wght@800&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animate.css pour les animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Glide.js pour le carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css">
+    
+    <!-- Lightbox pour les images -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    
+    <style>
+        /* Variables CSS pour les couleurs */
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #4ECDC4;
+            --accent-color: #FFD166;
+            --dark-color: #2D3748;
+            --light-color: #F7F9FC;
+            --jungle-green: #1A936F;
+            --toucan-yellow: #FFD166;
+            --toucan-orange: #F8961E;
+        }
+        
+        /* Reset et styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            overflow-x: hidden;
+            background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+        
+        /* Header principal */
+        .header-poster {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--jungle-green) 0%, var(--secondary-color) 100%);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .header-poster h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5rem;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-poster h1 .highlight {
+            color: var(--toucan-yellow);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-poster .subtitle {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem;
+            color: var(--toucan-yellow);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Conteneur principal */
+        .container-poster {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Section de faits marquants */
+        .facts-section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-left: 10px solid var(--toucan-orange);
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            color: var(--jungle-green);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--toucan-yellow), var(--toucan-orange));
+            border-radius: 5px;
+        }
+        
+        /* Grille de caractéristiques */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--secondary-color);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--jungle-green);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--jungle-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Galerie d'images */
+        .gallery-section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .image-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-card .caption {
+            padding: 15px;
+            background-color: var(--light-color);
+            font-style: italic;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        
+        /* Carte d'information détaillée */
+        .info-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background-image: url('https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            z-index: 0;
+        }
+        
+        .info-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .info-card h3 {
+            font-size: 2rem;
+            color: var(--jungle-green);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--toucan-orange);
+            display: inline-block;
+        }
+        
+        .info-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--toucan-yellow), var(--toucan-orange));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+        }
+        
+        /* Statistiques */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 25px 15px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 200px;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--jungle-green);
+            display: block;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        /* Boutons interactifs */
+        .btn-group-custom {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .btn-custom {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--jungle-green), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--toucan-orange), var(--toucan-yellow));
+            color: white;
+        }
+        
+        .btn-tertiary {
+            background: linear-gradient(135deg, var(--primary-color), #FF8E8E);
+            color: white;
+        }
+        
+        /* Carousel */
+        .glide__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .glide__slide img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer-poster {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1A202C 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+        
+        .footer-poster .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .footer-poster .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-poster .social-icons a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-poster h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-poster h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-poster .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .container-poster {
+                padding: 15px;
+            }
+            
+            .facts-section, .gallery-section, .info-card {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-poster h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group-custom {
+                flex-direction: column;
+            }
+            
+            .btn-custom {
+                width: 100%;
+            }
+        }
+        
+        /* Animations personnalisées */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Styles pour les citations */
+        .quote-box {
+            border-left: 5px solid var(--toucan-orange);
+            padding-left: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #555;
+            font-size: 1.2rem;
+        }
+        
+        .quote-author {
+            text-align: right;
+            color: var(--jungle-green);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Header principal de l'affiche -->
+    <header class="header-poster">
+        <h1 class="animate__animated animate__fadeInDown">
+            <i class="fas fa-feather-alt"></i> Le <span class="highlight">Magnifique</span> Toucan <i class="fas fa-feather-alt"></i>
+        </h1>
+        <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">L'oiseau le plus coloré des forêts tropicales</p>
+        
+        <div class="floating-icon animate__animated animate__bounceIn animate__delay-2s">
+            <i class="fas fa-dove" style="font-size: 4rem; color: white; opacity: 0.7;"></i>
+        </div>
+    </header>
+    
+    <!-- Conteneur principal -->
+    <main class="container-poster">
+        
+        <!-- Section des faits marquants -->
+        <section class="facts-section" data-aos="fade-up">
+            <h2 class="section-title">Fascinant Toucan</h2>
+            <p class="text-center mb-5" style="font-size: 1.2rem;">Le toucan est l'un des oiseaux les plus reconnaissables au monde, célèbre pour son immense bec coloré et son plumage éclatant.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-kiwi-bird"></i>
+                    <h3>Bec emblématique</h3>
+                    <p>Le bec du toucan représente jusqu'à 50% de sa longueur totale, mais il est étonnamment léger grâce à sa structure en nid d'abeille.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-palette"></i>
+                    <h3>Plumage coloré</h3>
+                    <p>Son plumage noir contraste avec des zones de couleurs vives (jaune, rouge, orange, blanc) sur la poitrine et autour des yeux.</p>
+                </div>
+                
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Habitat tropical</h3>
+                    <p>Il vit dans les forêts tropicales d'Amérique centrale et du Sud, du Mexique à l'Argentine, principalement dans la canopée.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Galerie d'images -->
+        <section class="gallery-section" data-aos="fade-up">
+            <h2 class="section-title">Galerie du Toucan</h2>
+            
+            <div class="row mt-4">
+                <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="image-card">
+                        <a href="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Toucan Toco - L'espèce la plus connue">
+                            <img src="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Toucan Toco">
+                        </a>
+                        <div class="caption">Toucan Toco - L'espèce la plus connue</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="image-card">
+                        <a href="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Toucan dans son habitat naturel">
+                            <img src="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Toucan dans son habitat">
+                        </a>
+                        <div class="caption">Toucan dans son habitat naturel</div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
+                    <div class="image-card">
+                        <a href="https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Bec coloré du Toucan">
+                            <img src="https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Bec du Toucan">
+                        </a>
+                        <div class="caption">Bec coloré du Toucan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Carousel d'images -->
+        <section class="gallery-section mt-5" data-aos="fade-up">
+            <h2 class="section-title">Les Espèces de Toucans</h2>
+            
+            <div class="glide mt-4">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide">
+                            <img src="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan Toco">
+                            <div class="caption mt-2">Toucan Toco - Le plus grand de tous les toucans</div>
+                        </li>
+                        <li class="glide__slide">
+                            <img src="https://images.unsplash.com/photo-1562699236-7f9c7e3d3b3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan à bec arc-en-ciel">
+                            <div class="caption mt-2">Toucan à bec arc-en-ciel - Un véritable spectacle de couleurs</div>
+                        </li>
+                        <li class="glide__slide">
+                            <img src="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan montagnard">
+                            <div class="caption mt-2">Toucan montagnard - Vit dans les forêts d'altitude</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section d'information détaillée -->
+        <section class="info-card mt-5" data-aos="fade-up">
+            <h2 class="section-title">La Vie du Toucan</h2>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3><i class="fas fa-utensils"></i> Alimentation</h3>
+                    <p>Le toucan est principalement <strong>frugivore</strong>, se nourrissant de fruits tropicaux comme les figues, les baies et les papayes. Son long bec lui permet d'atteindre des fruits situés sur des branches trop fines pour supporter son poids.</p>
+                    
+                    <div class="highlight-box">
+                        <i class="fas fa-lightbulb"></i> Saviez-vous ? Le toucan utilise la pointe de son bec pour peler délicatement les fruits avant de les consommer.
+                    </div>
+                    
+                    <p>Il complète son régime avec des insectes, des œufs d'autres oiseaux, de petits lézards et même des oisillons, ce qui en fait un omnivore opportuniste.</p>
+                </div>
+                
+                <div class="col-md-6">
+                    <h3><i class="fas fa-home"></i> Habitat & Comportement</h3>
+                    <p>Les toucans vivent en petits groupes familiaux de 6 à 12 individus dans la canopée des forêts tropicales humides. Ils sont diurnes et passent la majeure partie de leur journée à chercher de la nourriture.</p>
+                    
+                    <p>La nuit, ils dorment dans des cavités d'arbres, souvent en se tournant pour placer leur bec sur leur dos et leur queue repliée sur leur tête, formant une boule de plumes pour conserver la chaleur.</p>
+                    
+                    <div class="quote-box">
+                        "Le toucan n'est pas seulement un symbole de la forêt tropicale, il en est aussi un jardinier essentiel, dispersant les graines des fruits qu'il consomme."
+                        <div class="quote-author">- Biologiste tropical</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Statistiques -->
+            <div class="stats-container mt-5">
+                <div class="stat-item" data-aos="flip-left" data-aos-delay="100">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Espèces différentes</span>
+                </div>
+                
+                <div class="stat-item" data-aos="flip-left" data-aos-delay="200">
+                    <span class="stat-number">20 cm</span>
+                    <span class="stat-label">Longueur du bec (max)</span>
+                </div>
+                
+                <div class="stat-item" data-aos="flip-left" data-aos-delay="300">
+                    <span class="stat-number">60 cm</span>
+                    <span class="stat-label">Taille totale</span>
+                </div>
+                
+                <div class="stat-item" data-aos="flip-left" data-aos-delay="400">
+                    <span class="stat-number">20 ans</span>
+                    <span class="stat-label">Espérance de vie</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Boutons interactifs -->
+        <div class="btn-group-custom">
+            <button class="btn-custom btn-primary" onclick="showAlert()">
+                <i class="fas fa-info-circle"></i> Faits Surprenants
+            </button>
+            
+            <button class="btn-custom btn-secondary" onclick="toggleConservationInfo()">
+                <i class="fas fa-shield-alt"></i> Conservation
+            </button>
+            
+            <button class="btn-custom btn-tertiary" onclick="playToucanSound()">
+                <i class="fas fa-volume-up"></i> Écouter le Toucan
+            </button>
+        </div>
+        
+        <!-- Section de conservation (cachée au départ) -->
+        <div id="conservationInfo" class="info-card" style="display: none;" data-aos="fade-up">
+            <h3><i class="fas fa-shield-alt"></i> Conservation du Toucan</h3>
+            <p>Plusieurs espèces de toucans sont menacées en raison de la <strong>destruction de leur habitat</strong> par la déforestation et l'expansion agricole. Le commerce illégal d'animaux exotiques représente également une menace importante.</p>
+            
+            <div class="highlight-box">
+                <i class="fas fa-hands-helping"></i> Comment aider ? Soutenez les organisations de conservation des forêts tropicales et évitez d'acheter des animaux exotiques issus du commerce illégal.
+            </div>
+            
+            <p>Les programmes de conservation incluent la protection des habitats, la création de réserves naturelles et des efforts de réintroduction. Certains pays d'Amérique latine ont classé le toucan comme espèce protégée.</p>
+            
+            <button class="btn-custom btn-secondary mt-3" onclick="toggleConservationInfo()">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+        </div>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer-poster">
+        <h3 class="mb-3">Le Magnifique Toucan</h3>
+        <p>Une création éducative pour célébrer la biodiversité de notre planète</p>
+        
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <p class="mt-4"><i class="fas fa-leaf"></i> Protégeons les forêts tropicales pour préserver le toucan et des milliers d'autres espèces. <i class="fas fa-leaf"></i></p>
+        <p class="mt-2">© 2023 - Affiche Éducative sur le Toucan</p>
+    </footer>
+    
+    <!-- Bibliothèques JavaScript -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Glide.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/glide.min.js"></script>
+    
+    <!-- Lightbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
+    <!-- JavaScript personnalisé -->
+    <script>
+        // Initialisation des bibliothèques
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialiser AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+            
+            // Initialiser Glide.js
+            new Glide('.glide', {
+                type: 'carousel',
+                startAt: 0,
+                perView: 1,
+                autoplay: 3000,
+                hoverpause: true,
+                breakpoints: {
+                    768: {
+                        perView: 1
+                    }
+                }
+            }).mount();
+            
+            // Initialiser Lightbox
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'albumLabel': 'Image %1 de %2'
+            });
+            
+            // Message de bienvenue
+            console.log('%c🦜 Bienvenue sur l\'affiche éducative du Toucan ! 🦜', 'color: #1A936F; font-size: 18px; font-weight: bold;');
+            console.log('%cDécouvrez l\'un des oiseaux les plus fascinants de la planète.', 'color: #4ECDC4; font-size: 14px;');
+        });
+        
+        // Fonction pour afficher des faits surprenants
+        function showAlert() {
+            const facts = [
+                "Le bec du toucan est léger car il est composé de kératine (comme nos ongles) avec de petites cavités d'air à l'intérieur.",
+                "Les toucans peuvent réguler la température de leur corps en augmentant ou diminuant le flux sanguin dans leur bec.",
+                "Le toucan Toco peut vivre jusqu'à 20 ans en captivité, mais moins longtemps dans la nature.",
+                "Leurs cris peuvent être entendus à plus d'un kilomètre de distance dans la forêt tropicale.",
+                "Les toucans sont d'excellents voiliers mais préfèrent sauter de branche en branche plutôt que de voler sur de longues distances."
+            ];
+            
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            
+            // Créer une alerte personnalisée
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-success alert-dismissible fade show';
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.top = '20px';
+            alertDiv.style.right = '20px';
+            alertDiv.style.zIndex = '9999';
+            alertDiv.style.maxWidth = '400px';
+            alertDiv.innerHTML = `
+                <h4 class="alert-heading"><i class="fas fa-lightbulb"></i> Saviez-vous ?</h4>
+                <p>${randomFact}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Supprimer automatiquement après 7 secondes
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 7000);
+        }
+        
+        // Fonction pour afficher/masquer les informations sur la conservation
+        function toggleConservationInfo() {
+            const conservationInfo = document.getElementById('conservationInfo');
+            if (conservationInfo.style.display === 'none' || conservationInfo.style.display === '') {
+                conservationInfo.style.display = 'block';
+                // Scroll doux vers la section
+                conservationInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                conservationInfo.style.display = 'none';
+            }
+        }
+        
+        // Fonction pour jouer un son de toucan
+        function playToucanSound() {
+            // Créer un élément audio
+            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-bird-tweet-3106.mp3');
+            
+            // Jouer le son
+            audio.play().catch(e => {
+                console.log("Lecture automatique bloquée par le navigateur");
+                // Si la lecture automatique est bloquée, afficher un message
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-info alert-dismissible fade show';
+                alertDiv.style.position = 'fixed';
+                alertDiv.style.top = '20px';
+                alertDiv.style.right = '20px';
+                alertDiv.style.zIndex = '9999';
+                alertDiv.style.maxWidth = '400px';
+                alertDiv.innerHTML = `
+                    <h4 class="alert-heading"><i class="fas fa-volume-up"></i> Son du Toucan</h4>
+                    <p>Le son du toucan est un croassement grave qui peut porter sur de longues distances dans la forêt.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                document.body.appendChild(alertDiv);
+                
+                // Supprimer automatiquement après 5 secondes
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.remove();
+                    }
+                }, 5000);
+            });
+        }
+        
+        // Effet de parallaxe au défilement
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header-poster');
+            if (header) {
+                header.style.backgroundPositionY = `${scrolled * 0.5}px`;
+            }
+        });
+        
+        // Animation aléatoire des icônes
+        setInterval(() => {
+            const icons = document.querySelectorAll('.feature-card i');
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            
+            randomIcon.classList.add('animate__animated', 'animate__pulse');
+            setTimeout(() => {
+                randomIcon.classList.remove('animate__animated', 'animate__pulse');
+            }, 1000);
+        }, 3000);
+    </script>
+    
+</body>
+</html>
