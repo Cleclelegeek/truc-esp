@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Magnifique Toucan - Affiche Éducative</title>
+    <title>El Magnífico Tucán - Póster Educativo</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,21 +14,21 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate.css pour les animations -->
+    <!-- Animate.css para animaciones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Glide.js pour le carousel -->
+    <!-- Glide.js para el carrusel -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.theme.min.css">
     
-    <!-- Lightbox pour les images -->
+    <!-- Lightbox para imágenes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     
     <style>
-        /* Variables CSS pour les couleurs */
+        /* Variables CSS para los colores */
         :root {
             --primary-color: #FF6B6B;
             --secondary-color: #4ECDC4;
@@ -40,7 +40,7 @@
             --toucan-orange: #F8961E;
         }
         
-        /* Reset et styles généraux */
+        /* Reset y estilos generales */
         * {
             margin: 0;
             padding: 0;
@@ -118,14 +118,14 @@
             z-index: 1;
         }
         
-        /* Conteneur principal */
+        /* Contenedor principal */
         .container-poster {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
         
-        /* Section de faits marquants */
+        /* Sección de datos destacados */
         .facts-section {
             background-color: white;
             border-radius: 20px;
@@ -157,7 +157,7 @@
             border-radius: 5px;
         }
         
-        /* Grille de caractéristiques */
+        /* Rejilla de características */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -185,6 +185,7 @@
             color: var(--jungle-green);
             margin-bottom: 20px;
             background: linear-gradient(135deg, var(--secondary-color), var(--jungle-green));
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -201,7 +202,7 @@
             line-height: 1.6;
         }
         
-        /* Galerie d'images */
+        /* Galería de imágenes */
         .gallery-section {
             background-color: white;
             border-radius: 20px;
@@ -238,7 +239,7 @@
             text-align: center;
         }
         
-        /* Carte d'information détaillée */
+        /* Tarjeta de información detallada */
         .info-card {
             background-color: white;
             border-radius: 20px;
@@ -294,7 +295,7 @@
             font-weight: 600;
         }
         
-        /* Statistiques */
+        /* Estadísticas */
         .stats-container {
             display: flex;
             justify-content: space-around;
@@ -329,7 +330,7 @@
             font-weight: 600;
         }
         
-        /* Boutons interactifs */
+        /* Botones interactivos */
         .btn-group-custom {
             display: flex;
             justify-content: center;
@@ -374,6 +375,23 @@
         }
         
         /* Carousel */
+        .glide {
+            position: relative;
+        }
+
+        .glide__arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            z-index: 15;
+            pointer-events: none;
+        }
         .glide__slide {
             display: flex;
             justify-content: center;
@@ -384,6 +402,37 @@
             max-width: 100%;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carousel buttons (Glide.js) - more visible and accessible */
+        .glide__arrow {
+            background: var(--dark-color);
+            color: #ffffff;
+            border: none;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            min-height: 48px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+            transition: transform 0.18s ease, background 0.18s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .glide__arrow i {
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .glide__arrow:hover,
+        .glide__arrow:focus {
+            transform: translateY(-4px);
+            background: linear-gradient(135deg, var(--jungle-green), var(--secondary-color));
+            outline: none;
         }
         
         /* Footer */
@@ -453,6 +502,37 @@
             .facts-section, .gallery-section, .info-card {
                 padding: 25px;
             }
+
+            /* Mobile performance: avoid fixed background on smaller screens */
+            body {
+                background-attachment: scroll;
+            }
+
+            /* Slightly smaller icons on tablet/phone */
+            .feature-card i {
+                font-size: 2.2rem;
+            }
+
+            /* Limit carousel image height on small screens */
+            .glide__slide img {
+                max-height: 360px;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            /* Make carousel arrows overlay the slides and easier to tap */
+            .glide__arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 15;
+                width: 48px;
+                height: 48px;
+                opacity: 0.98;
+            }
+
+            .glide__arrow--left { left: 8px; }
+            .glide__arrow--right { right: 8px; }
         }
         
         @media (max-width: 576px) {
@@ -467,9 +547,25 @@
             .btn-custom {
                 width: 100%;
             }
+
+            /* Increase touch targets for very small screens */
+            .feature-card i {
+                font-size: 1.8rem;
+            }
+
+            .glide__arrow {
+                width: 56px;
+                height: 56px;
+                box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            }
+
+            /* Keep carousel images from becoming too tall on phones */
+            .glide__slide img {
+                max-height: 300px;
+            }
         }
         
-        /* Animations personnalisées */
+        /* Animaciones personalizadas */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -479,7 +575,7 @@
             animation: float 3s ease-in-out infinite;
         }
         
-        /* Styles pour les citations */
+        /* Estilos para citas */
         .quote-box {
             border-left: 5px solid var(--toucan-orange);
             padding-left: 25px;
@@ -499,99 +595,99 @@
 </head>
 <body>
     
-    <!-- Header principal de l'affiche -->
+    <!-- Header principal del póster -->
     <header class="header-poster">
         <h1 class="animate__animated animate__fadeInDown">
-            <i class="fas fa-feather-alt"></i> Le <span class="highlight">Magnifique</span> Toucan <i class="fas fa-feather-alt"></i>
+            <i class="fas fa-feather-alt"></i> El <span class="highlight">Magnífico</span> Tucán <i class="fas fa-feather-alt"></i>
         </h1>
-        <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">L'oiseau le plus coloré des forêts tropicales</p>
+        <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">El ave más colorida de las selvas tropicales</p>
         
         <div class="floating-icon animate__animated animate__bounceIn animate__delay-2s">
             <i class="fas fa-dove" style="font-size: 4rem; color: white; opacity: 0.7;"></i>
         </div>
     </header>
     
-    <!-- Conteneur principal -->
+    <!-- Contenedor principal -->
     <main class="container-poster">
         
-        <!-- Section des faits marquants -->
+        <!-- Sección de datos destacados -->
         <section class="facts-section" data-aos="fade-up">
-            <h2 class="section-title">Fascinant Toucan</h2>
-            <p class="text-center mb-5" style="font-size: 1.2rem;">Le toucan est l'un des oiseaux les plus reconnaissables au monde, célèbre pour son immense bec coloré et son plumage éclatant.</p>
+            <h2 class="section-title">Tucán Fascinante</h2>
+            <p class="text-center mb-5" style="font-size: 1.2rem;">El tucán es una de las aves más conocidas del mundo. Tiene un pico grande y un plumaje muy llamativo.</p>
             
             <div class="features-grid">
                 <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-kiwi-bird"></i>
-                    <h3>Bec emblématique</h3>
-                    <p>Le bec du toucan représente jusqu'à 50% de sa longueur totale, mais il est étonnamment léger grâce à sa structure en nid d'abeille.</p>
+                    <h3>Pico emblemático</h3>
+                    <p>El pico del tucán puede medir hasta la mitad de su cuerpo, pero es ligero porque tiene una estructura interior en forma de panal.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-palette"></i>
-                    <h3>Plumage coloré</h3>
-                    <p>Son plumage noir contraste avec des zones de couleurs vives (jaune, rouge, orange, blanc) sur la poitrine et autour des yeux.</p>
+                    <h3>Plumaje colorido</h3>
+                    <p>Su plumaje oscuro contrasta con zonas de colores vivos (amarillo, rojo, naranja y blanco) en el pecho y alrededor de los ojos.</p>
                 </div>
                 
                 <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
                     <i class="fas fa-globe-americas"></i>
-                    <h3>Habitat tropical</h3>
-                    <p>Il vit dans les forêts tropicales d'Amérique centrale et du Sud, du Mexique à l'Argentine, principalement dans la canopée.</p>
+                    <h3>Hábitat tropical</h3>
+                    <p>Vive en las selvas tropicales de Centro y Sudamérica, desde México hasta Argentina, principalmente en la copa de los árboles.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Galerie d'images -->
+        <!-- Galería de imágenes -->
         <section class="gallery-section" data-aos="fade-up">
-            <h2 class="section-title">Galerie du Toucan</h2>
+            <h2 class="section-title">Galería del Tucán</h2>
             
             <div class="row mt-4">
                 <div class="col-md-4" data-aos="fade-right" data-aos-delay="100">
                     <div class="image-card">
-                        <a href="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Toucan Toco - L'espèce la plus connue">
-                            <img src="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Toucan Toco">
+                        <a href="toucan1.jpg" data-lightbox="toucan-gallery" data-title="Tucán Toco - La especie más conocida">
+                            <img src="toucan1.jpg" alt="Tucán Toco">
                         </a>
-                        <div class="caption">Toucan Toco - L'espèce la plus connue</div>
+                        <div class="caption">Tucán Toco - La especie más conocida</div>
                     </div>
                 </div>
                 
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="image-card">
-                        <a href="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Toucan dans son habitat naturel">
-                            <img src="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Toucan dans son habitat">
+                        <a href="toucan2.jpg" data-lightbox="toucan-gallery" data-title="Tucán en su hábitat natural">
+                            <img src="toucan2.jpg" alt="Tucán en su hábitat">
                         </a>
-                        <div class="caption">Toucan dans son habitat naturel</div>
+                        <div class="caption">Tucán en su hábitat natural</div>
                     </div>
                 </div>
                 
                 <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
                     <div class="image-card">
-                        <a href="https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" data-lightbox="toucan-gallery" data-title="Bec coloré du Toucan">
-                            <img src="https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Bec du Toucan">
+                        <a href="toucan3.jpg" data-lightbox="toucan-gallery" data-title="Pico colorido del Tucán">
+                            <img src="toucan3.jpg" alt="Pico del Tucán">
                         </a>
-                        <div class="caption">Bec coloré du Toucan</div>
+                        <div class="caption">Pico colorido del Tucán</div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Carousel d'images -->
+        <!-- Carrusel de imágenes -->
         <section class="gallery-section mt-5" data-aos="fade-up">
-            <h2 class="section-title">Les Espèces de Toucans</h2>
+            <h2 class="section-title">Especies de Tucanes</h2>
             
             <div class="glide mt-4">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
                         <li class="glide__slide">
-                            <img src="https://images.unsplash.com/photo-1550853024-10a2e0b9b6b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan Toco">
-                            <div class="caption mt-2">Toucan Toco - Le plus grand de tous les toucans</div>
+                            <img src="toucan6.jpg" alt="Tucán Toco - El más grande de los tucanes">
+                            <div class="caption mt-2">Tucán Toco - El más grande de los tucanes</div>
                         </li>
                         <li class="glide__slide">
-                            <img src="https://images.unsplash.com/photo-1562699236-7f9c7e3d3b3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan à bec arc-en-ciel">
-                            <div class="caption mt-2">Toucan à bec arc-en-ciel - Un véritable spectacle de couleurs</div>
+                            <img src="toucan4.jpg" alt="Tucán de pico arcoíris">
+                            <div class="caption mt-2">Tucán de pico arcoíris - Un verdadero espectáculo de colores</div>
                         </li>
                         <li class="glide__slide">
-                            <img src="https://images.unsplash.com/photo-1548851492-2c2f40d0d95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toucan montagnard">
-                            <div class="caption mt-2">Toucan montagnard - Vit dans les forêts d'altitude</div>
+                            <img src="toucan5.jpg" alt="Tucán de montaña">
+                            <div class="caption mt-2">Tucán de montaña - Vive en bosques de altura</div>
                         </li>
                     </ul>
                 </div>
@@ -602,109 +698,101 @@
             </div>
         </section>
         
-        <!-- Section d'information détaillée -->
+        <!-- Sección de información detallada -->
         <section class="info-card mt-5" data-aos="fade-up">
-            <h2 class="section-title">La Vie du Toucan</h2>
+            <h2 class="section-title">La vida del tucán</h2>
             
             <div class="row mt-4">
                 <div class="col-md-6">
-                    <h3><i class="fas fa-utensils"></i> Alimentation</h3>
-                    <p>Le toucan est principalement <strong>frugivore</strong>, se nourrissant de fruits tropicaux comme les figues, les baies et les papayes. Son long bec lui permet d'atteindre des fruits situés sur des branches trop fines pour supporter son poids.</p>
+                    <h3><i class="fas fa-utensils"></i> Alimentación</h3>
+                    <p>El tucán es principalmente <strong>frugívoro</strong>. Come frutas tropicales como higos, bayas y papaya. Su largo pico le ayuda a alcanzar frutas en ramas delgadas.</p>
                     
                     <div class="highlight-box">
-                        <i class="fas fa-lightbulb"></i> Saviez-vous ? Le toucan utilise la pointe de son bec pour peler délicatement les fruits avant de les consommer.
+                        <i class="fas fa-lightbulb"></i> ¿Sabías que? El tucán usa la punta de su pico para pelar suavemente las frutas antes de comerlas.
                     </div>
                     
-                    <p>Il complète son régime avec des insectes, des œufs d'autres oiseaux, de petits lézards et même des oisillons, ce qui en fait un omnivore opportuniste.</p>
+                    <p>También come insectos, huevos de otras aves, pequeños lagartos e incluso polluelos, por eso puede comportarse como un omnívoro oportunista.</p>
                 </div>
                 
                 <div class="col-md-6">
-                    <h3><i class="fas fa-home"></i> Habitat & Comportement</h3>
-                    <p>Les toucans vivent en petits groupes familiaux de 6 à 12 individus dans la canopée des forêts tropicales humides. Ils sont diurnes et passent la majeure partie de leur journée à chercher de la nourriture.</p>
+                    <h3><i class="fas fa-home"></i> Hábitat y comportamiento</h3>
+                    <p>Los tucanes viven en grupos familiares pequeños de 6 a 12 individuos en la copa de los árboles. Son diurnos y pasan el día buscando comida.</p>
                     
-                    <p>La nuit, ils dorment dans des cavités d'arbres, souvent en se tournant pour placer leur bec sur leur dos et leur queue repliée sur leur tête, formant une boule de plumes pour conserver la chaleur.</p>
+                    <p>Por la noche duermen en huecos de árboles, a veces apoyando el pico sobre el lomo y doblando la cola sobre la cabeza para conservar el calor.</p>
                     
                     <div class="quote-box">
-                        "Le toucan n'est pas seulement un symbole de la forêt tropicale, il en est aussi un jardinier essentiel, dispersant les graines des fruits qu'il consomme."
-                        <div class="quote-author">- Biologiste tropical</div>
+                        "El tucán no solo es un símbolo de la selva tropical, también es un importante jardinero que dispersa las semillas de las frutas que come."
+                        <div class="quote-author">- Biólogo tropical</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Statistiques -->
+            <!-- Estadísticas -->
             <div class="stats-container mt-5">
                 <div class="stat-item" data-aos="flip-left" data-aos-delay="100">
                     <span class="stat-number">40+</span>
-                    <span class="stat-label">Espèces différentes</span>
+                    <span class="stat-label">Especies distintas</span>
                 </div>
                 
                 <div class="stat-item" data-aos="flip-left" data-aos-delay="200">
                     <span class="stat-number">20 cm</span>
-                    <span class="stat-label">Longueur du bec (max)</span>
+                    <span class="stat-label">Longitud del pico (máx)</span>
                 </div>
                 
                 <div class="stat-item" data-aos="flip-left" data-aos-delay="300">
                     <span class="stat-number">60 cm</span>
-                    <span class="stat-label">Taille totale</span>
+                    <span class="stat-label">Longitud total</span>
                 </div>
                 
                 <div class="stat-item" data-aos="flip-left" data-aos-delay="400">
-                    <span class="stat-number">20 ans</span>
-                    <span class="stat-label">Espérance de vie</span>
+                    <span class="stat-number">20 años</span>
+                    <span class="stat-label">Esperanza de vida</span>
                 </div>
             </div>
         </section>
         
-        <!-- Boutons interactifs -->
+        <!-- Botones interactivos -->
         <div class="btn-group-custom">
             <button class="btn-custom btn-primary" onclick="showAlert()">
-                <i class="fas fa-info-circle"></i> Faits Surprenants
+                <i class="fas fa-info-circle"></i> Datos sorprendentes
             </button>
             
             <button class="btn-custom btn-secondary" onclick="toggleConservationInfo()">
-                <i class="fas fa-shield-alt"></i> Conservation
+                <i class="fas fa-shield-alt"></i> Conservación
             </button>
             
             <button class="btn-custom btn-tertiary" onclick="playToucanSound()">
-                <i class="fas fa-volume-up"></i> Écouter le Toucan
+                <i class="fas fa-volume-up"></i> Escuchar al Tucán
             </button>
         </div>
         
-        <!-- Section de conservation (cachée au départ) -->
+        <!-- Sección de conservación (oculta al inicio) -->
         <div id="conservationInfo" class="info-card" style="display: none;" data-aos="fade-up">
-            <h3><i class="fas fa-shield-alt"></i> Conservation du Toucan</h3>
-            <p>Plusieurs espèces de toucans sont menacées en raison de la <strong>destruction de leur habitat</strong> par la déforestation et l'expansion agricole. Le commerce illégal d'animaux exotiques représente également une menace importante.</p>
+            <h3><i class="fas fa-shield-alt"></i> Conservación del Tucán</h3>
+            <p>Varias especies de tucanes están amenazadas por la <strong>pérdida de su hábitat</strong> debido a la deforestación y la expansión agrícola. El comercio ilegal de animales exóticos también es una amenaza.</p>
             
             <div class="highlight-box">
-                <i class="fas fa-hands-helping"></i> Comment aider ? Soutenez les organisations de conservation des forêts tropicales et évitez d'acheter des animaux exotiques issus du commerce illégal.
+                <i class="fas fa-hands-helping"></i> ¿Cómo ayudar? Apoya a las organizaciones que protegen las selvas y evita comprar animales exóticos del comercio ilegal.
             </div>
             
-            <p>Les programmes de conservation incluent la protection des habitats, la création de réserves naturelles et des efforts de réintroduction. Certains pays d'Amérique latine ont classé le toucan comme espèce protégée.</p>
+            <p>Los programas de conservación incluyen proteger hábitats, crear reservas y proyectos de reintroducción. En algunos países latinoamericanos el tucán está protegido por la ley.</p>
             
             <button class="btn-custom btn-secondary mt-3" onclick="toggleConservationInfo()">
-                <i class="fas fa-times"></i> Fermer
+                <i class="fas fa-times"></i> Cerrar
             </button>
         </div>
         
     </main>
     
-    <!-- Footer -->
+    <!-- Pie de página -->
     <footer class="footer-poster">
-        <h3 class="mb-3">Le Magnifique Toucan</h3>
-        <p>Une création éducative pour célébrer la biodiversité de notre planète</p>
-        
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        
-        <p class="mt-4"><i class="fas fa-leaf"></i> Protégeons les forêts tropicales pour préserver le toucan et des milliers d'autres espèces. <i class="fas fa-leaf"></i></p>
-        <p class="mt-2">© 2023 - Affiche Éducative sur le Toucan</p>
+        <h3 class="mb-3">El Magnífico Tucán</h3>
+        <p>Un proyecto educativo para celebrar la biodiversidad de nuestro planeta</p>
+        <p class="mt-4"><i class="fas fa-leaf"></i> Protejamos las selvas tropicales para conservar al tucán y a miles de especies. <i class="fas fa-leaf"></i></p>
+        <p class="mt-2">© 2026 - Póster educativo sobre el tucán</p>
     </footer>
     
-    <!-- Bibliothèques JavaScript -->
+    <!-- Bibliotecas JavaScript -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
@@ -717,18 +805,18 @@
     <!-- Lightbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     
-    <!-- JavaScript personnalisé -->
+    <!-- JavaScript personalizado -->
     <script>
-        // Initialisation des bibliothèques
+        // Inicialización de bibliotecas
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialiser AOS
+            // Inicializar AOS
             AOS.init({
                 duration: 1000,
                 once: true,
                 offset: 100
             });
             
-            // Initialiser Glide.js
+            // Inicializar Glide.js
             new Glide('.glide', {
                 type: 'carousel',
                 startAt: 0,
@@ -742,31 +830,31 @@
                 }
             }).mount();
             
-            // Initialiser Lightbox
+            // Inicializar Lightbox
             lightbox.option({
                 'resizeDuration': 200,
                 'wrapAround': true,
-                'albumLabel': 'Image %1 de %2'
+                'albumLabel': 'Imagen %1 de %2'
             });
             
-            // Message de bienvenue
-            console.log('%c🦜 Bienvenue sur l\'affiche éducative du Toucan ! 🦜', 'color: #1A936F; font-size: 18px; font-weight: bold;');
-            console.log('%cDécouvrez l\'un des oiseaux les plus fascinants de la planète.', 'color: #4ECDC4; font-size: 14px;');
+            // Mensaje de bienvenida
+            console.log('%c🦜 ¡Bienvenido al póster educativo del tucán! 🦜', 'color: #1A936F; font-size: 18px; font-weight: bold;');
+            console.log('%cDescubre una de las aves más fascinantes del planeta.', 'color: #4ECDC4; font-size: 14px;');
         });
         
-        // Fonction pour afficher des faits surprenants
+        // Función para mostrar datos sorprendentes
         function showAlert() {
             const facts = [
-                "Le bec du toucan est léger car il est composé de kératine (comme nos ongles) avec de petites cavités d'air à l'intérieur.",
-                "Les toucans peuvent réguler la température de leur corps en augmentant ou diminuant le flux sanguin dans leur bec.",
-                "Le toucan Toco peut vivre jusqu'à 20 ans en captivité, mais moins longtemps dans la nature.",
-                "Leurs cris peuvent être entendus à plus d'un kilomètre de distance dans la forêt tropicale.",
-                "Les toucans sont d'excellents voiliers mais préfèrent sauter de branche en branche plutôt que de voler sur de longues distances."
+                "El pico del tucán es ligero porque está hecho de queratina y tiene cavidades de aire en su interior.",
+                "Los tucanes pueden ayudar a regular su temperatura cambiando el flujo de sangre en el pico.",
+                "El tucán Toco puede vivir hasta 20 años en cautiverio, pero suele vivir menos en la naturaleza.",
+                "Sus llamados se pueden oír a más de un kilómetro de distancia en la selva.",
+                "Los tucanes prefieren saltar entre ramas antes que volar largas distancias."
             ];
             
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
             
-            // Créer une alerte personnalisée
+            // Crear una alerta personalizada
             const alertDiv = document.createElement('div');
             alertDiv.className = 'alert alert-success alert-dismissible fade show';
             alertDiv.style.position = 'fixed';
@@ -775,14 +863,14 @@
             alertDiv.style.zIndex = '9999';
             alertDiv.style.maxWidth = '400px';
             alertDiv.innerHTML = `
-                <h4 class="alert-heading"><i class="fas fa-lightbulb"></i> Saviez-vous ?</h4>
+                <h4 class="alert-heading"><i class="fas fa-lightbulb"></i> ¿Sabías que?</h4>
                 <p>${randomFact}</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             `;
             
             document.body.appendChild(alertDiv);
             
-            // Supprimer automatiquement après 7 secondes
+            // Eliminar automáticamente después de 7 segundos
             setTimeout(() => {
                 if (alertDiv.parentNode) {
                     alertDiv.remove();
@@ -790,27 +878,27 @@
             }, 7000);
         }
         
-        // Fonction pour afficher/masquer les informations sur la conservation
+        // Función para mostrar/ocultar la información sobre conservación
         function toggleConservationInfo() {
             const conservationInfo = document.getElementById('conservationInfo');
             if (conservationInfo.style.display === 'none' || conservationInfo.style.display === '') {
                 conservationInfo.style.display = 'block';
-                // Scroll doux vers la section
+                // Scroll suave hacia la sección
                 conservationInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 conservationInfo.style.display = 'none';
             }
         }
         
-        // Fonction pour jouer un son de toucan
+        // Función para reproducir un sonido de tucán
         function playToucanSound() {
-            // Créer un élément audio
-            const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-bird-tweet-3106.mp3');
+            // Crear un elemento de audio
+            const audio = new Audio('freesound_community-111013__soundbytez__chesnut-mandibled-toucan-34105.mp3');
             
-            // Jouer le son
+            // Reproducir el sonido
             audio.play().catch(e => {
-                console.log("Lecture automatique bloquée par le navigateur");
-                // Si la lecture automatique est bloquée, afficher un message
+                console.log("Reproducción automática bloqueada por el navegador");
+                // Si la reproducción está bloqueada, mostrar un mensaje
                 const alertDiv = document.createElement('div');
                 alertDiv.className = 'alert alert-info alert-dismissible fade show';
                 alertDiv.style.position = 'fixed';
@@ -819,14 +907,14 @@
                 alertDiv.style.zIndex = '9999';
                 alertDiv.style.maxWidth = '400px';
                 alertDiv.innerHTML = `
-                    <h4 class="alert-heading"><i class="fas fa-volume-up"></i> Son du Toucan</h4>
-                    <p>Le son du toucan est un croassement grave qui peut porter sur de longues distances dans la forêt.</p>
+                    <h4 class="alert-heading"><i class="fas fa-volume-up"></i> Sonido del Tucán</h4>
+                    <p>El sonido del tucán es un croar grave que puede escucharse a larga distancia en la selva.</p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 `;
                 
                 document.body.appendChild(alertDiv);
                 
-                // Supprimer automatiquement après 5 secondes
+                // Eliminar automáticamente después de 5 segundos
                 setTimeout(() => {
                     if (alertDiv.parentNode) {
                         alertDiv.remove();
@@ -835,16 +923,7 @@
             });
         }
         
-        // Effet de parallaxe au défilement
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const header = document.querySelector('.header-poster');
-            if (header) {
-                header.style.backgroundPositionY = `${scrolled * 0.5}px`;
-            }
-        });
-        
-        // Animation aléatoire des icônes
+        // Animación aleatoria de los iconos
         setInterval(() => {
             const icons = document.querySelectorAll('.feature-card i');
             const randomIcon = icons[Math.floor(Math.random() * icons.length)];
